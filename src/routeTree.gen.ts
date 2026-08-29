@@ -20,6 +20,7 @@ import { Route as AdminPenggunaIndexRouteImport } from './routes/admin.pengguna.
 import { Route as AdminPenggunaIdRouteImport } from './routes/admin.pengguna.$id'
 import { Route as AdminPenggunaBaruRouteImport } from './routes/admin.pengguna.baru'
 import { Route as AdminQuotesIndexRouteImport } from './routes/admin.quotes.index'
+import { Route as AdminQuotesBaruRouteImport } from './routes/admin.quotes.baru'
 import { Route as AdminTemplateIndexRouteImport } from './routes/admin.template.index'
 import { Route as AdminTemplateUploadRouteImport } from './routes/admin.template.upload'
 import { Route as AdminUndanganIndexRouteImport } from './routes/admin.undangan.index'
@@ -81,6 +82,11 @@ const AdminQuotesIndexRoute = AdminQuotesIndexRouteImport.update({
   path: '/quotes/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminQuotesBaruRoute = AdminQuotesBaruRouteImport.update({
+  id: '/quotes/baru',
+  path: '/quotes/baru',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminTemplateIndexRoute = AdminTemplateIndexRouteImport.update({
   id: '/template/',
   path: '/template/',
@@ -116,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/quotes/baru': typeof AdminQuotesBaruRoute
   '/admin/template/upload': typeof AdminTemplateUploadRoute
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/quotes/baru': typeof AdminQuotesBaruRoute
   '/admin/template/upload': typeof AdminTemplateUploadRoute
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
@@ -152,6 +160,7 @@ export interface FileRoutesById {
   '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/quotes/baru': typeof AdminQuotesBaruRoute
   '/admin/template/upload': typeof AdminTemplateUploadRoute
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
@@ -172,6 +181,7 @@ export interface FileRouteTypes {
     | '/admin/doa/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
+    | '/admin/quotes/baru'
     | '/admin/template/upload'
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
@@ -189,6 +199,7 @@ export interface FileRouteTypes {
     | '/admin/doa/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
+    | '/admin/quotes/baru'
     | '/admin/template/upload'
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/admin/doa/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
+    | '/admin/quotes/baru'
     | '/admin/template/upload'
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
@@ -302,6 +314,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminQuotesIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/quotes/baru': {
+      id: '/admin/quotes/baru'
+      path: '/quotes/baru'
+      fullPath: '/admin/quotes/baru'
+      preLoaderRoute: typeof AdminQuotesBaruRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/template/': {
       id: '/admin/template/'
       path: '/template'
@@ -346,6 +365,7 @@ interface AdminRouteChildren {
   AdminDoaBaruRoute: typeof AdminDoaBaruRoute
   AdminPenggunaIdRoute: typeof AdminPenggunaIdRoute
   AdminPenggunaBaruRoute: typeof AdminPenggunaBaruRoute
+  AdminQuotesBaruRoute: typeof AdminQuotesBaruRoute
   AdminTemplateUploadRoute: typeof AdminTemplateUploadRoute
   AdminUndanganIdRoute: typeof AdminUndanganIdRoute
   AdminUndanganBaruRoute: typeof AdminUndanganBaruRoute
@@ -362,6 +382,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminDoaBaruRoute: AdminDoaBaruRoute,
   AdminPenggunaIdRoute: AdminPenggunaIdRoute,
   AdminPenggunaBaruRoute: AdminPenggunaBaruRoute,
+  AdminQuotesBaruRoute: AdminQuotesBaruRoute,
   AdminTemplateUploadRoute: AdminTemplateUploadRoute,
   AdminUndanganIdRoute: AdminUndanganIdRoute,
   AdminUndanganBaruRoute: AdminUndanganBaruRoute,
