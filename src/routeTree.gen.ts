@@ -14,6 +14,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminDoaIndexRouteImport } from './routes/admin.doa.index'
+import { Route as AdminDoaIdRouteImport } from './routes/admin.doa.$id'
 import { Route as AdminDoaBaruRouteImport } from './routes/admin.doa.baru'
 import { Route as AdminPenggunaIndexRouteImport } from './routes/admin.pengguna.index'
 import { Route as AdminPenggunaIdRouteImport } from './routes/admin.pengguna.$id'
@@ -47,6 +48,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
 const AdminDoaIndexRoute = AdminDoaIndexRouteImport.update({
   id: '/doa/',
   path: '/doa/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDoaIdRoute = AdminDoaIdRouteImport.update({
+  id: '/doa/$id',
+  path: '/doa/$id',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminDoaBaruRoute = AdminDoaBaruRouteImport.update({
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/login': typeof LoginRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
@@ -115,6 +122,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/admin': typeof AdminIndexRoute
+  '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/login': typeof LoginRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/login'
     | '/admin/'
+    | '/admin/doa/$id'
     | '/admin/doa/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
@@ -165,6 +175,7 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/admin'
+    | '/admin/doa/$id'
     | '/admin/doa/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/login'
     | '/admin/'
+    | '/admin/doa/$id'
     | '/admin/doa/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
@@ -234,6 +246,13 @@ declare module '@tanstack/react-router' {
       path: '/doa'
       fullPath: '/admin/doa/'
       preLoaderRoute: typeof AdminDoaIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/doa/$id': {
+      id: '/admin/doa/$id'
+      path: '/doa/$id'
+      fullPath: '/admin/doa/$id'
+      preLoaderRoute: typeof AdminDoaIdRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/doa/baru': {
@@ -304,6 +323,7 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
+  AdminDoaIdRoute: typeof AdminDoaIdRoute
   AdminDoaBaruRoute: typeof AdminDoaBaruRoute
   AdminPenggunaIdRoute: typeof AdminPenggunaIdRoute
   AdminPenggunaBaruRoute: typeof AdminPenggunaBaruRoute
@@ -318,6 +338,7 @@ interface AdminRouteChildren {
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
+  AdminDoaIdRoute: AdminDoaIdRoute,
   AdminDoaBaruRoute: AdminDoaBaruRoute,
   AdminPenggunaIdRoute: AdminPenggunaIdRoute,
   AdminPenggunaBaruRoute: AdminPenggunaBaruRoute,
