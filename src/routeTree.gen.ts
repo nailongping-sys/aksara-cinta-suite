@@ -17,6 +17,7 @@ import { Route as AdminDoaIndexRouteImport } from './routes/admin.doa.index'
 import { Route as AdminDoaIdRouteImport } from './routes/admin.doa.$id'
 import { Route as AdminDoaBaruRouteImport } from './routes/admin.doa.baru'
 import { Route as AdminGaleriAsetIndexRouteImport } from './routes/admin.galeri-aset.index'
+import { Route as AdminGaleriAsetUploadRouteImport } from './routes/admin.galeri-aset.upload'
 import { Route as AdminMusikIndexRouteImport } from './routes/admin.musik.index'
 import { Route as AdminMusikBaruRouteImport } from './routes/admin.musik.baru'
 import { Route as AdminPenggunaIndexRouteImport } from './routes/admin.pengguna.index'
@@ -70,6 +71,11 @@ const AdminDoaBaruRoute = AdminDoaBaruRouteImport.update({
 const AdminGaleriAsetIndexRoute = AdminGaleriAsetIndexRouteImport.update({
   id: '/galeri-aset/',
   path: '/galeri-aset/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminGaleriAsetUploadRoute = AdminGaleriAsetUploadRouteImport.update({
+  id: '/galeri-aset/upload',
+  path: '/galeri-aset/upload',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminMusikIndexRoute = AdminMusikIndexRouteImport.update({
@@ -150,6 +156,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
+  '/admin/galeri-aset/upload': typeof AdminGaleriAsetUploadRoute
   '/admin/musik/baru': typeof AdminMusikBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
@@ -173,6 +180,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
+  '/admin/galeri-aset/upload': typeof AdminGaleriAsetUploadRoute
   '/admin/musik/baru': typeof AdminMusikBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
@@ -198,6 +206,7 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
+  '/admin/galeri-aset/upload': typeof AdminGaleriAsetUploadRoute
   '/admin/musik/baru': typeof AdminMusikBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
@@ -224,6 +233,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
+    | '/admin/galeri-aset/upload'
     | '/admin/musik/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
@@ -247,6 +257,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
+    | '/admin/galeri-aset/upload'
     | '/admin/musik/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
@@ -271,6 +282,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
+    | '/admin/galeri-aset/upload'
     | '/admin/musik/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
@@ -351,6 +363,13 @@ declare module '@tanstack/react-router' {
       path: '/galeri-aset'
       fullPath: '/admin/galeri-aset/'
       preLoaderRoute: typeof AdminGaleriAsetIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/galeri-aset/upload': {
+      id: '/admin/galeri-aset/upload'
+      path: '/galeri-aset/upload'
+      fullPath: '/admin/galeri-aset/upload'
+      preLoaderRoute: typeof AdminGaleriAsetUploadRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/musik/': {
@@ -458,6 +477,7 @@ interface AdminRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
   AdminDoaIdRoute: typeof AdminDoaIdRoute
   AdminDoaBaruRoute: typeof AdminDoaBaruRoute
+  AdminGaleriAsetUploadRoute: typeof AdminGaleriAsetUploadRoute
   AdminMusikBaruRoute: typeof AdminMusikBaruRoute
   AdminPenggunaIdRoute: typeof AdminPenggunaIdRoute
   AdminPenggunaBaruRoute: typeof AdminPenggunaBaruRoute
@@ -480,6 +500,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
   AdminDoaIdRoute: AdminDoaIdRoute,
   AdminDoaBaruRoute: AdminDoaBaruRoute,
+  AdminGaleriAsetUploadRoute: AdminGaleriAsetUploadRoute,
   AdminMusikBaruRoute: AdminMusikBaruRoute,
   AdminPenggunaIdRoute: AdminPenggunaIdRoute,
   AdminPenggunaBaruRoute: AdminPenggunaBaruRoute,
