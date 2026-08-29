@@ -17,6 +17,7 @@ import { Route as AdminPenggunaIndexRouteImport } from './routes/admin.pengguna.
 import { Route as AdminPenggunaIdRouteImport } from './routes/admin.pengguna.$id'
 import { Route as AdminPenggunaBaruRouteImport } from './routes/admin.pengguna.baru'
 import { Route as AdminUndanganIndexRouteImport } from './routes/admin.undangan.index'
+import { Route as AdminUndanganBaruRouteImport } from './routes/admin.undangan.baru'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +59,11 @@ const AdminUndanganIndexRoute = AdminUndanganIndexRouteImport.update({
   path: '/undangan/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminUndanganBaruRoute = AdminUndanganBaruRouteImport.update({
+  id: '/undangan/baru',
+  path: '/undangan/baru',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/pengguna/': typeof AdminPenggunaIndexRoute
   '/admin/undangan/': typeof AdminUndanganIndexRoute
 }
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/pengguna': typeof AdminPenggunaIndexRoute
   '/admin/undangan': typeof AdminUndanganIndexRoute
 }
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/pengguna/': typeof AdminPenggunaIndexRoute
   '/admin/undangan/': typeof AdminUndanganIndexRoute
 }
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
+    | '/admin/undangan/baru'
     | '/admin/pengguna/'
     | '/admin/undangan/'
   fileRoutesByTo: FileRoutesByTo
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
+    | '/admin/undangan/baru'
     | '/admin/pengguna'
     | '/admin/undangan'
   id:
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
+    | '/admin/undangan/baru'
     | '/admin/pengguna/'
     | '/admin/undangan/'
   fileRoutesById: FileRoutesById
@@ -185,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUndanganIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/undangan/baru': {
+      id: '/admin/undangan/baru'
+      path: '/undangan/baru'
+      fullPath: '/admin/undangan/baru'
+      preLoaderRoute: typeof AdminUndanganBaruRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
@@ -192,6 +211,7 @@ interface AdminRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
   AdminPenggunaIdRoute: typeof AdminPenggunaIdRoute
   AdminPenggunaBaruRoute: typeof AdminPenggunaBaruRoute
+  AdminUndanganBaruRoute: typeof AdminUndanganBaruRoute
   AdminPenggunaIndexRoute: typeof AdminPenggunaIndexRoute
   AdminUndanganIndexRoute: typeof AdminUndanganIndexRoute
 }
@@ -200,6 +220,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
   AdminPenggunaIdRoute: AdminPenggunaIdRoute,
   AdminPenggunaBaruRoute: AdminPenggunaBaruRoute,
+  AdminUndanganBaruRoute: AdminUndanganBaruRoute,
   AdminPenggunaIndexRoute: AdminPenggunaIndexRoute,
   AdminUndanganIndexRoute: AdminUndanganIndexRoute,
 }
