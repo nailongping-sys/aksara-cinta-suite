@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminDoaIndexRouteImport } from './routes/admin.doa.index'
 import { Route as AdminPenggunaIndexRouteImport } from './routes/admin.pengguna.index'
 import { Route as AdminPenggunaIdRouteImport } from './routes/admin.pengguna.$id'
 import { Route as AdminPenggunaBaruRouteImport } from './routes/admin.pengguna.baru'
@@ -40,6 +41,11 @@ const LoginRoute = LoginRouteImport.update({
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDoaIndexRoute = AdminDoaIndexRouteImport.update({
+  id: '/doa/',
+  path: '/doa/',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminPenggunaIndexRoute = AdminPenggunaIndexRouteImport.update({
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/admin/template/upload': typeof AdminTemplateUploadRoute
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
+  '/admin/doa/': typeof AdminDoaIndexRoute
   '/admin/pengguna/': typeof AdminPenggunaIndexRoute
   '/admin/template/': typeof AdminTemplateIndexRoute
   '/admin/undangan/': typeof AdminUndanganIndexRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/admin/template/upload': typeof AdminTemplateUploadRoute
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
+  '/admin/doa': typeof AdminDoaIndexRoute
   '/admin/pengguna': typeof AdminPenggunaIndexRoute
   '/admin/template': typeof AdminTemplateIndexRoute
   '/admin/undangan': typeof AdminUndanganIndexRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/admin/template/upload': typeof AdminTemplateUploadRoute
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
+  '/admin/doa/': typeof AdminDoaIndexRoute
   '/admin/pengguna/': typeof AdminPenggunaIndexRoute
   '/admin/template/': typeof AdminTemplateIndexRoute
   '/admin/undangan/': typeof AdminUndanganIndexRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/admin/template/upload'
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
+    | '/admin/doa/'
     | '/admin/pengguna/'
     | '/admin/template/'
     | '/admin/undangan/'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/admin/template/upload'
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
+    | '/admin/doa'
     | '/admin/pengguna'
     | '/admin/template'
     | '/admin/undangan'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/admin/template/upload'
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
+    | '/admin/doa/'
     | '/admin/pengguna/'
     | '/admin/template/'
     | '/admin/undangan/'
@@ -203,6 +215,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/doa/': {
+      id: '/admin/doa/'
+      path: '/doa'
+      fullPath: '/admin/doa/'
+      preLoaderRoute: typeof AdminDoaIndexRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/pengguna/': {
@@ -271,6 +290,7 @@ interface AdminRouteChildren {
   AdminTemplateUploadRoute: typeof AdminTemplateUploadRoute
   AdminUndanganIdRoute: typeof AdminUndanganIdRoute
   AdminUndanganBaruRoute: typeof AdminUndanganBaruRoute
+  AdminDoaIndexRoute: typeof AdminDoaIndexRoute
   AdminPenggunaIndexRoute: typeof AdminPenggunaIndexRoute
   AdminTemplateIndexRoute: typeof AdminTemplateIndexRoute
   AdminUndanganIndexRoute: typeof AdminUndanganIndexRoute
@@ -283,6 +303,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminTemplateUploadRoute: AdminTemplateUploadRoute,
   AdminUndanganIdRoute: AdminUndanganIdRoute,
   AdminUndanganBaruRoute: AdminUndanganBaruRoute,
+  AdminDoaIndexRoute: AdminDoaIndexRoute,
   AdminPenggunaIndexRoute: AdminPenggunaIndexRoute,
   AdminTemplateIndexRoute: AdminTemplateIndexRoute,
   AdminUndanganIndexRoute: AdminUndanganIndexRoute,
