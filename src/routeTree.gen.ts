@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as DasborRouteImport } from './routes/dasbor'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminProfilRouteImport } from './routes/admin.profil'
@@ -45,6 +46,11 @@ const IndexRoute = IndexRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DasborRoute = DasborRouteImport.update({
+  id: '/dasbor',
+  path: '/dasbor',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -176,6 +182,7 @@ const AdminUndanganBaruRoute = AdminUndanganBaruRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
+  '/dasbor': typeof DasborRoute
   '/login': typeof LoginRoute
   '/admin/profil': typeof AdminProfilRoute
   '/admin/rsvp': typeof AdminRsvpRoute
@@ -204,6 +211,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dasbor': typeof DasborRoute
   '/login': typeof LoginRoute
   '/admin/profil': typeof AdminProfilRoute
   '/admin/rsvp': typeof AdminRsvpRoute
@@ -234,6 +242,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
+  '/dasbor': typeof DasborRoute
   '/login': typeof LoginRoute
   '/admin/profil': typeof AdminProfilRoute
   '/admin/rsvp': typeof AdminRsvpRoute
@@ -265,6 +274,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/dasbor'
     | '/login'
     | '/admin/profil'
     | '/admin/rsvp'
@@ -293,6 +303,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/dasbor'
     | '/login'
     | '/admin/profil'
     | '/admin/rsvp'
@@ -322,6 +333,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin'
+    | '/dasbor'
     | '/login'
     | '/admin/profil'
     | '/admin/rsvp'
@@ -352,6 +364,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRouteWithChildren
+  DasborRoute: typeof DasborRoute
   LoginRoute: typeof LoginRoute
 }
 
@@ -369,6 +382,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dasbor': {
+      id: '/dasbor'
+      path: '/dasbor'
+      fullPath: '/dasbor'
+      preLoaderRoute: typeof DasborRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -608,6 +628,7 @@ const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRouteWithChildren,
+  DasborRoute: DasborRoute,
   LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
