@@ -19,6 +19,7 @@ import { Route as AdminDoaBaruRouteImport } from './routes/admin.doa.baru'
 import { Route as AdminPenggunaIndexRouteImport } from './routes/admin.pengguna.index'
 import { Route as AdminPenggunaIdRouteImport } from './routes/admin.pengguna.$id'
 import { Route as AdminPenggunaBaruRouteImport } from './routes/admin.pengguna.baru'
+import { Route as AdminQuotesIndexRouteImport } from './routes/admin.quotes.index'
 import { Route as AdminTemplateIndexRouteImport } from './routes/admin.template.index'
 import { Route as AdminTemplateUploadRouteImport } from './routes/admin.template.upload'
 import { Route as AdminUndanganIndexRouteImport } from './routes/admin.undangan.index'
@@ -75,6 +76,11 @@ const AdminPenggunaBaruRoute = AdminPenggunaBaruRouteImport.update({
   path: '/pengguna/baru',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminQuotesIndexRoute = AdminQuotesIndexRouteImport.update({
+  id: '/quotes/',
+  path: '/quotes/',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminTemplateIndexRoute = AdminTemplateIndexRouteImport.update({
   id: '/template/',
   path: '/template/',
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/doa/': typeof AdminDoaIndexRoute
   '/admin/pengguna/': typeof AdminPenggunaIndexRoute
+  '/admin/quotes/': typeof AdminQuotesIndexRoute
   '/admin/template/': typeof AdminTemplateIndexRoute
   '/admin/undangan/': typeof AdminUndanganIndexRoute
 }
@@ -131,6 +138,7 @@ export interface FileRoutesByTo {
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/doa': typeof AdminDoaIndexRoute
   '/admin/pengguna': typeof AdminPenggunaIndexRoute
+  '/admin/quotes': typeof AdminQuotesIndexRoute
   '/admin/template': typeof AdminTemplateIndexRoute
   '/admin/undangan': typeof AdminUndanganIndexRoute
 }
@@ -149,6 +157,7 @@ export interface FileRoutesById {
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/doa/': typeof AdminDoaIndexRoute
   '/admin/pengguna/': typeof AdminPenggunaIndexRoute
+  '/admin/quotes/': typeof AdminQuotesIndexRoute
   '/admin/template/': typeof AdminTemplateIndexRoute
   '/admin/undangan/': typeof AdminUndanganIndexRoute
 }
@@ -168,6 +177,7 @@ export interface FileRouteTypes {
     | '/admin/undangan/baru'
     | '/admin/doa/'
     | '/admin/pengguna/'
+    | '/admin/quotes/'
     | '/admin/template/'
     | '/admin/undangan/'
   fileRoutesByTo: FileRoutesByTo
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
     | '/admin/undangan/baru'
     | '/admin/doa'
     | '/admin/pengguna'
+    | '/admin/quotes'
     | '/admin/template'
     | '/admin/undangan'
   id:
@@ -201,6 +212,7 @@ export interface FileRouteTypes {
     | '/admin/undangan/baru'
     | '/admin/doa/'
     | '/admin/pengguna/'
+    | '/admin/quotes/'
     | '/admin/template/'
     | '/admin/undangan/'
   fileRoutesById: FileRoutesById
@@ -283,6 +295,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPenggunaBaruRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/quotes/': {
+      id: '/admin/quotes/'
+      path: '/quotes'
+      fullPath: '/admin/quotes/'
+      preLoaderRoute: typeof AdminQuotesIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/template/': {
       id: '/admin/template/'
       path: '/template'
@@ -332,6 +351,7 @@ interface AdminRouteChildren {
   AdminUndanganBaruRoute: typeof AdminUndanganBaruRoute
   AdminDoaIndexRoute: typeof AdminDoaIndexRoute
   AdminPenggunaIndexRoute: typeof AdminPenggunaIndexRoute
+  AdminQuotesIndexRoute: typeof AdminQuotesIndexRoute
   AdminTemplateIndexRoute: typeof AdminTemplateIndexRoute
   AdminUndanganIndexRoute: typeof AdminUndanganIndexRoute
 }
@@ -347,6 +367,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminUndanganBaruRoute: AdminUndanganBaruRoute,
   AdminDoaIndexRoute: AdminDoaIndexRoute,
   AdminPenggunaIndexRoute: AdminPenggunaIndexRoute,
+  AdminQuotesIndexRoute: AdminQuotesIndexRoute,
   AdminTemplateIndexRoute: AdminTemplateIndexRoute,
   AdminUndanganIndexRoute: AdminUndanganIndexRoute,
 }
