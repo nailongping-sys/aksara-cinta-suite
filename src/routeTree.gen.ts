@@ -10,33 +10,396 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as DasborRouteImport } from './routes/dasbor'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminProfilRouteImport } from './routes/admin.profil'
+import { Route as AdminRsvpRouteImport } from './routes/admin.rsvp'
+import { Route as AdminSistemRouteImport } from './routes/admin.sistem'
+import { Route as AdminTransaksiRouteImport } from './routes/admin.transaksi'
+import { Route as DasborIndexRouteImport } from './routes/dasbor.index'
+import { Route as DasborAcaraRouteImport } from './routes/dasbor.acara'
+import { Route as DasborMempelaiRouteImport } from './routes/dasbor.mempelai'
+import { Route as AdminDoaIndexRouteImport } from './routes/admin.doa.index'
+import { Route as AdminDoaIdRouteImport } from './routes/admin.doa.$id'
+import { Route as AdminDoaBaruRouteImport } from './routes/admin.doa.baru'
+import { Route as AdminGaleriAsetIndexRouteImport } from './routes/admin.galeri-aset.index'
+import { Route as AdminGaleriAsetUploadRouteImport } from './routes/admin.galeri-aset.upload'
+import { Route as AdminMusikIndexRouteImport } from './routes/admin.musik.index'
+import { Route as AdminMusikBaruRouteImport } from './routes/admin.musik.baru'
+import { Route as AdminPenggunaIndexRouteImport } from './routes/admin.pengguna.index'
+import { Route as AdminPenggunaIdRouteImport } from './routes/admin.pengguna.$id'
+import { Route as AdminPenggunaBaruRouteImport } from './routes/admin.pengguna.baru'
+import { Route as AdminQuotesIndexRouteImport } from './routes/admin.quotes.index'
+import { Route as AdminQuotesBaruRouteImport } from './routes/admin.quotes.baru'
+import { Route as AdminSuratIndexRouteImport } from './routes/admin.surat.index'
+import { Route as AdminSuratBaruRouteImport } from './routes/admin.surat.baru'
+import { Route as AdminTemplateIndexRouteImport } from './routes/admin.template.index'
+import { Route as AdminTemplateUploadRouteImport } from './routes/admin.template.upload'
+import { Route as AdminUndanganIndexRouteImport } from './routes/admin.undangan.index'
+import { Route as AdminUndanganIdRouteImport } from './routes/admin.undangan.$id'
+import { Route as AdminUndanganBaruRouteImport } from './routes/admin.undangan.baru'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DasborRoute = DasborRouteImport.update({
+  id: '/dasbor',
+  path: '/dasbor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProfilRoute = AdminProfilRouteImport.update({
+  id: '/profil',
+  path: '/profil',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRsvpRoute = AdminRsvpRouteImport.update({
+  id: '/rsvp',
+  path: '/rsvp',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSistemRoute = AdminSistemRouteImport.update({
+  id: '/sistem',
+  path: '/sistem',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTransaksiRoute = AdminTransaksiRouteImport.update({
+  id: '/transaksi',
+  path: '/transaksi',
+  getParentRoute: () => AdminRoute,
+} as any)
+const DasborIndexRoute = DasborIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DasborRoute,
+} as any)
+const DasborAcaraRoute = DasborAcaraRouteImport.update({
+  id: '/acara',
+  path: '/acara',
+  getParentRoute: () => DasborRoute,
+} as any)
+const DasborMempelaiRoute = DasborMempelaiRouteImport.update({
+  id: '/mempelai',
+  path: '/mempelai',
+  getParentRoute: () => DasborRoute,
+} as any)
+const AdminDoaIndexRoute = AdminDoaIndexRouteImport.update({
+  id: '/doa/',
+  path: '/doa/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDoaIdRoute = AdminDoaIdRouteImport.update({
+  id: '/doa/$id',
+  path: '/doa/$id',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDoaBaruRoute = AdminDoaBaruRouteImport.update({
+  id: '/doa/baru',
+  path: '/doa/baru',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminGaleriAsetIndexRoute = AdminGaleriAsetIndexRouteImport.update({
+  id: '/galeri-aset/',
+  path: '/galeri-aset/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminGaleriAsetUploadRoute = AdminGaleriAsetUploadRouteImport.update({
+  id: '/galeri-aset/upload',
+  path: '/galeri-aset/upload',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMusikIndexRoute = AdminMusikIndexRouteImport.update({
+  id: '/musik/',
+  path: '/musik/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMusikBaruRoute = AdminMusikBaruRouteImport.update({
+  id: '/musik/baru',
+  path: '/musik/baru',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPenggunaIndexRoute = AdminPenggunaIndexRouteImport.update({
+  id: '/pengguna/',
+  path: '/pengguna/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPenggunaIdRoute = AdminPenggunaIdRouteImport.update({
+  id: '/pengguna/$id',
+  path: '/pengguna/$id',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPenggunaBaruRoute = AdminPenggunaBaruRouteImport.update({
+  id: '/pengguna/baru',
+  path: '/pengguna/baru',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminQuotesIndexRoute = AdminQuotesIndexRouteImport.update({
+  id: '/quotes/',
+  path: '/quotes/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminQuotesBaruRoute = AdminQuotesBaruRouteImport.update({
+  id: '/quotes/baru',
+  path: '/quotes/baru',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSuratIndexRoute = AdminSuratIndexRouteImport.update({
+  id: '/surat/',
+  path: '/surat/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSuratBaruRoute = AdminSuratBaruRouteImport.update({
+  id: '/surat/baru',
+  path: '/surat/baru',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTemplateIndexRoute = AdminTemplateIndexRouteImport.update({
+  id: '/template/',
+  path: '/template/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTemplateUploadRoute = AdminTemplateUploadRouteImport.update({
+  id: '/template/upload',
+  path: '/template/upload',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUndanganIndexRoute = AdminUndanganIndexRouteImport.update({
+  id: '/undangan/',
+  path: '/undangan/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUndanganIdRoute = AdminUndanganIdRouteImport.update({
+  id: '/undangan/$id',
+  path: '/undangan/$id',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUndanganBaruRoute = AdminUndanganBaruRouteImport.update({
+  id: '/undangan/baru',
+  path: '/undangan/baru',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/dasbor': typeof DasborRouteWithChildren
+  '/login': typeof LoginRoute
+  '/admin/profil': typeof AdminProfilRoute
+  '/admin/rsvp': typeof AdminRsvpRoute
+  '/admin/sistem': typeof AdminSistemRoute
+  '/admin/transaksi': typeof AdminTransaksiRoute
+  '/dasbor/acara': typeof DasborAcaraRoute
+  '/dasbor/mempelai': typeof DasborMempelaiRoute
+  '/admin/': typeof AdminIndexRoute
+  '/dasbor/': typeof DasborIndexRoute
+  '/admin/doa/$id': typeof AdminDoaIdRoute
+  '/admin/doa/baru': typeof AdminDoaBaruRoute
+  '/admin/galeri-aset/upload': typeof AdminGaleriAsetUploadRoute
+  '/admin/musik/baru': typeof AdminMusikBaruRoute
+  '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
+  '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/quotes/baru': typeof AdminQuotesBaruRoute
+  '/admin/surat/baru': typeof AdminSuratBaruRoute
+  '/admin/template/upload': typeof AdminTemplateUploadRoute
+  '/admin/undangan/$id': typeof AdminUndanganIdRoute
+  '/admin/undangan/baru': typeof AdminUndanganBaruRoute
+  '/admin/doa/': typeof AdminDoaIndexRoute
+  '/admin/galeri-aset/': typeof AdminGaleriAsetIndexRoute
+  '/admin/musik/': typeof AdminMusikIndexRoute
+  '/admin/pengguna/': typeof AdminPenggunaIndexRoute
+  '/admin/quotes/': typeof AdminQuotesIndexRoute
+  '/admin/surat/': typeof AdminSuratIndexRoute
+  '/admin/template/': typeof AdminTemplateIndexRoute
+  '/admin/undangan/': typeof AdminUndanganIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/admin/profil': typeof AdminProfilRoute
+  '/admin/rsvp': typeof AdminRsvpRoute
+  '/admin/sistem': typeof AdminSistemRoute
+  '/admin/transaksi': typeof AdminTransaksiRoute
+  '/dasbor/acara': typeof DasborAcaraRoute
+  '/dasbor/mempelai': typeof DasborMempelaiRoute
+  '/admin': typeof AdminIndexRoute
+  '/dasbor': typeof DasborIndexRoute
+  '/admin/doa/$id': typeof AdminDoaIdRoute
+  '/admin/doa/baru': typeof AdminDoaBaruRoute
+  '/admin/galeri-aset/upload': typeof AdminGaleriAsetUploadRoute
+  '/admin/musik/baru': typeof AdminMusikBaruRoute
+  '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
+  '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/quotes/baru': typeof AdminQuotesBaruRoute
+  '/admin/surat/baru': typeof AdminSuratBaruRoute
+  '/admin/template/upload': typeof AdminTemplateUploadRoute
+  '/admin/undangan/$id': typeof AdminUndanganIdRoute
+  '/admin/undangan/baru': typeof AdminUndanganBaruRoute
+  '/admin/doa': typeof AdminDoaIndexRoute
+  '/admin/galeri-aset': typeof AdminGaleriAsetIndexRoute
+  '/admin/musik': typeof AdminMusikIndexRoute
+  '/admin/pengguna': typeof AdminPenggunaIndexRoute
+  '/admin/quotes': typeof AdminQuotesIndexRoute
+  '/admin/surat': typeof AdminSuratIndexRoute
+  '/admin/template': typeof AdminTemplateIndexRoute
+  '/admin/undangan': typeof AdminUndanganIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/dasbor': typeof DasborRouteWithChildren
+  '/login': typeof LoginRoute
+  '/admin/profil': typeof AdminProfilRoute
+  '/admin/rsvp': typeof AdminRsvpRoute
+  '/admin/sistem': typeof AdminSistemRoute
+  '/admin/transaksi': typeof AdminTransaksiRoute
+  '/dasbor/acara': typeof DasborAcaraRoute
+  '/dasbor/mempelai': typeof DasborMempelaiRoute
+  '/admin/': typeof AdminIndexRoute
+  '/dasbor/': typeof DasborIndexRoute
+  '/admin/doa/$id': typeof AdminDoaIdRoute
+  '/admin/doa/baru': typeof AdminDoaBaruRoute
+  '/admin/galeri-aset/upload': typeof AdminGaleriAsetUploadRoute
+  '/admin/musik/baru': typeof AdminMusikBaruRoute
+  '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
+  '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/quotes/baru': typeof AdminQuotesBaruRoute
+  '/admin/surat/baru': typeof AdminSuratBaruRoute
+  '/admin/template/upload': typeof AdminTemplateUploadRoute
+  '/admin/undangan/$id': typeof AdminUndanganIdRoute
+  '/admin/undangan/baru': typeof AdminUndanganBaruRoute
+  '/admin/doa/': typeof AdminDoaIndexRoute
+  '/admin/galeri-aset/': typeof AdminGaleriAsetIndexRoute
+  '/admin/musik/': typeof AdminMusikIndexRoute
+  '/admin/pengguna/': typeof AdminPenggunaIndexRoute
+  '/admin/quotes/': typeof AdminQuotesIndexRoute
+  '/admin/surat/': typeof AdminSuratIndexRoute
+  '/admin/template/': typeof AdminTemplateIndexRoute
+  '/admin/undangan/': typeof AdminUndanganIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/dasbor'
+    | '/login'
+    | '/admin/profil'
+    | '/admin/rsvp'
+    | '/admin/sistem'
+    | '/admin/transaksi'
+    | '/dasbor/acara'
+    | '/dasbor/mempelai'
+    | '/admin/'
+    | '/dasbor/'
+    | '/admin/doa/$id'
+    | '/admin/doa/baru'
+    | '/admin/galeri-aset/upload'
+    | '/admin/musik/baru'
+    | '/admin/pengguna/$id'
+    | '/admin/pengguna/baru'
+    | '/admin/quotes/baru'
+    | '/admin/surat/baru'
+    | '/admin/template/upload'
+    | '/admin/undangan/$id'
+    | '/admin/undangan/baru'
+    | '/admin/doa/'
+    | '/admin/galeri-aset/'
+    | '/admin/musik/'
+    | '/admin/pengguna/'
+    | '/admin/quotes/'
+    | '/admin/surat/'
+    | '/admin/template/'
+    | '/admin/undangan/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/admin/profil'
+    | '/admin/rsvp'
+    | '/admin/sistem'
+    | '/admin/transaksi'
+    | '/dasbor/acara'
+    | '/dasbor/mempelai'
+    | '/admin'
+    | '/dasbor'
+    | '/admin/doa/$id'
+    | '/admin/doa/baru'
+    | '/admin/galeri-aset/upload'
+    | '/admin/musik/baru'
+    | '/admin/pengguna/$id'
+    | '/admin/pengguna/baru'
+    | '/admin/quotes/baru'
+    | '/admin/surat/baru'
+    | '/admin/template/upload'
+    | '/admin/undangan/$id'
+    | '/admin/undangan/baru'
+    | '/admin/doa'
+    | '/admin/galeri-aset'
+    | '/admin/musik'
+    | '/admin/pengguna'
+    | '/admin/quotes'
+    | '/admin/surat'
+    | '/admin/template'
+    | '/admin/undangan'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/dasbor'
+    | '/login'
+    | '/admin/profil'
+    | '/admin/rsvp'
+    | '/admin/sistem'
+    | '/admin/transaksi'
+    | '/dasbor/acara'
+    | '/dasbor/mempelai'
+    | '/admin/'
+    | '/dasbor/'
+    | '/admin/doa/$id'
+    | '/admin/doa/baru'
+    | '/admin/galeri-aset/upload'
+    | '/admin/musik/baru'
+    | '/admin/pengguna/$id'
+    | '/admin/pengguna/baru'
+    | '/admin/quotes/baru'
+    | '/admin/surat/baru'
+    | '/admin/template/upload'
+    | '/admin/undangan/$id'
+    | '/admin/undangan/baru'
+    | '/admin/doa/'
+    | '/admin/galeri-aset/'
+    | '/admin/musik/'
+    | '/admin/pengguna/'
+    | '/admin/quotes/'
+    | '/admin/surat/'
+    | '/admin/template/'
+    | '/admin/undangan/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  DasborRoute: typeof DasborRouteWithChildren
+  LoginRoute: typeof LoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +411,295 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dasbor': {
+      id: '/dasbor'
+      path: '/dasbor'
+      fullPath: '/dasbor'
+      preLoaderRoute: typeof DasborRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/profil': {
+      id: '/admin/profil'
+      path: '/profil'
+      fullPath: '/admin/profil'
+      preLoaderRoute: typeof AdminProfilRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/rsvp': {
+      id: '/admin/rsvp'
+      path: '/rsvp'
+      fullPath: '/admin/rsvp'
+      preLoaderRoute: typeof AdminRsvpRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/sistem': {
+      id: '/admin/sistem'
+      path: '/sistem'
+      fullPath: '/admin/sistem'
+      preLoaderRoute: typeof AdminSistemRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/transaksi': {
+      id: '/admin/transaksi'
+      path: '/transaksi'
+      fullPath: '/admin/transaksi'
+      preLoaderRoute: typeof AdminTransaksiRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/dasbor/': {
+      id: '/dasbor/'
+      path: '/'
+      fullPath: '/dasbor/'
+      preLoaderRoute: typeof DasborIndexRouteImport
+      parentRoute: typeof DasborRoute
+    }
+    '/dasbor/acara': {
+      id: '/dasbor/acara'
+      path: '/acara'
+      fullPath: '/dasbor/acara'
+      preLoaderRoute: typeof DasborAcaraRouteImport
+      parentRoute: typeof DasborRoute
+    }
+    '/dasbor/mempelai': {
+      id: '/dasbor/mempelai'
+      path: '/mempelai'
+      fullPath: '/dasbor/mempelai'
+      preLoaderRoute: typeof DasborMempelaiRouteImport
+      parentRoute: typeof DasborRoute
+    }
+    '/admin/doa/': {
+      id: '/admin/doa/'
+      path: '/doa'
+      fullPath: '/admin/doa/'
+      preLoaderRoute: typeof AdminDoaIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/doa/$id': {
+      id: '/admin/doa/$id'
+      path: '/doa/$id'
+      fullPath: '/admin/doa/$id'
+      preLoaderRoute: typeof AdminDoaIdRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/doa/baru': {
+      id: '/admin/doa/baru'
+      path: '/doa/baru'
+      fullPath: '/admin/doa/baru'
+      preLoaderRoute: typeof AdminDoaBaruRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/galeri-aset/': {
+      id: '/admin/galeri-aset/'
+      path: '/galeri-aset'
+      fullPath: '/admin/galeri-aset/'
+      preLoaderRoute: typeof AdminGaleriAsetIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/galeri-aset/upload': {
+      id: '/admin/galeri-aset/upload'
+      path: '/galeri-aset/upload'
+      fullPath: '/admin/galeri-aset/upload'
+      preLoaderRoute: typeof AdminGaleriAsetUploadRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/musik/': {
+      id: '/admin/musik/'
+      path: '/musik'
+      fullPath: '/admin/musik/'
+      preLoaderRoute: typeof AdminMusikIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/musik/baru': {
+      id: '/admin/musik/baru'
+      path: '/musik/baru'
+      fullPath: '/admin/musik/baru'
+      preLoaderRoute: typeof AdminMusikBaruRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pengguna/': {
+      id: '/admin/pengguna/'
+      path: '/pengguna'
+      fullPath: '/admin/pengguna/'
+      preLoaderRoute: typeof AdminPenggunaIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pengguna/$id': {
+      id: '/admin/pengguna/$id'
+      path: '/pengguna/$id'
+      fullPath: '/admin/pengguna/$id'
+      preLoaderRoute: typeof AdminPenggunaIdRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pengguna/baru': {
+      id: '/admin/pengguna/baru'
+      path: '/pengguna/baru'
+      fullPath: '/admin/pengguna/baru'
+      preLoaderRoute: typeof AdminPenggunaBaruRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/quotes/': {
+      id: '/admin/quotes/'
+      path: '/quotes'
+      fullPath: '/admin/quotes/'
+      preLoaderRoute: typeof AdminQuotesIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/quotes/baru': {
+      id: '/admin/quotes/baru'
+      path: '/quotes/baru'
+      fullPath: '/admin/quotes/baru'
+      preLoaderRoute: typeof AdminQuotesBaruRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/surat/': {
+      id: '/admin/surat/'
+      path: '/surat'
+      fullPath: '/admin/surat/'
+      preLoaderRoute: typeof AdminSuratIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/surat/baru': {
+      id: '/admin/surat/baru'
+      path: '/surat/baru'
+      fullPath: '/admin/surat/baru'
+      preLoaderRoute: typeof AdminSuratBaruRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/template/': {
+      id: '/admin/template/'
+      path: '/template'
+      fullPath: '/admin/template/'
+      preLoaderRoute: typeof AdminTemplateIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/template/upload': {
+      id: '/admin/template/upload'
+      path: '/template/upload'
+      fullPath: '/admin/template/upload'
+      preLoaderRoute: typeof AdminTemplateUploadRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/undangan/': {
+      id: '/admin/undangan/'
+      path: '/undangan'
+      fullPath: '/admin/undangan/'
+      preLoaderRoute: typeof AdminUndanganIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/undangan/$id': {
+      id: '/admin/undangan/$id'
+      path: '/undangan/$id'
+      fullPath: '/admin/undangan/$id'
+      preLoaderRoute: typeof AdminUndanganIdRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/undangan/baru': {
+      id: '/admin/undangan/baru'
+      path: '/undangan/baru'
+      fullPath: '/admin/undangan/baru'
+      preLoaderRoute: typeof AdminUndanganBaruRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminProfilRoute: typeof AdminProfilRoute
+  AdminRsvpRoute: typeof AdminRsvpRoute
+  AdminSistemRoute: typeof AdminSistemRoute
+  AdminTransaksiRoute: typeof AdminTransaksiRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  AdminDoaIdRoute: typeof AdminDoaIdRoute
+  AdminDoaBaruRoute: typeof AdminDoaBaruRoute
+  AdminGaleriAsetUploadRoute: typeof AdminGaleriAsetUploadRoute
+  AdminMusikBaruRoute: typeof AdminMusikBaruRoute
+  AdminPenggunaIdRoute: typeof AdminPenggunaIdRoute
+  AdminPenggunaBaruRoute: typeof AdminPenggunaBaruRoute
+  AdminQuotesBaruRoute: typeof AdminQuotesBaruRoute
+  AdminSuratBaruRoute: typeof AdminSuratBaruRoute
+  AdminTemplateUploadRoute: typeof AdminTemplateUploadRoute
+  AdminUndanganIdRoute: typeof AdminUndanganIdRoute
+  AdminUndanganBaruRoute: typeof AdminUndanganBaruRoute
+  AdminDoaIndexRoute: typeof AdminDoaIndexRoute
+  AdminGaleriAsetIndexRoute: typeof AdminGaleriAsetIndexRoute
+  AdminMusikIndexRoute: typeof AdminMusikIndexRoute
+  AdminPenggunaIndexRoute: typeof AdminPenggunaIndexRoute
+  AdminQuotesIndexRoute: typeof AdminQuotesIndexRoute
+  AdminSuratIndexRoute: typeof AdminSuratIndexRoute
+  AdminTemplateIndexRoute: typeof AdminTemplateIndexRoute
+  AdminUndanganIndexRoute: typeof AdminUndanganIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminProfilRoute: AdminProfilRoute,
+  AdminRsvpRoute: AdminRsvpRoute,
+  AdminSistemRoute: AdminSistemRoute,
+  AdminTransaksiRoute: AdminTransaksiRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  AdminDoaIdRoute: AdminDoaIdRoute,
+  AdminDoaBaruRoute: AdminDoaBaruRoute,
+  AdminGaleriAsetUploadRoute: AdminGaleriAsetUploadRoute,
+  AdminMusikBaruRoute: AdminMusikBaruRoute,
+  AdminPenggunaIdRoute: AdminPenggunaIdRoute,
+  AdminPenggunaBaruRoute: AdminPenggunaBaruRoute,
+  AdminQuotesBaruRoute: AdminQuotesBaruRoute,
+  AdminSuratBaruRoute: AdminSuratBaruRoute,
+  AdminTemplateUploadRoute: AdminTemplateUploadRoute,
+  AdminUndanganIdRoute: AdminUndanganIdRoute,
+  AdminUndanganBaruRoute: AdminUndanganBaruRoute,
+  AdminDoaIndexRoute: AdminDoaIndexRoute,
+  AdminGaleriAsetIndexRoute: AdminGaleriAsetIndexRoute,
+  AdminMusikIndexRoute: AdminMusikIndexRoute,
+  AdminPenggunaIndexRoute: AdminPenggunaIndexRoute,
+  AdminQuotesIndexRoute: AdminQuotesIndexRoute,
+  AdminSuratIndexRoute: AdminSuratIndexRoute,
+  AdminTemplateIndexRoute: AdminTemplateIndexRoute,
+  AdminUndanganIndexRoute: AdminUndanganIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface DasborRouteChildren {
+  DasborAcaraRoute: typeof DasborAcaraRoute
+  DasborMempelaiRoute: typeof DasborMempelaiRoute
+  DasborIndexRoute: typeof DasborIndexRoute
+}
+
+const DasborRouteChildren: DasborRouteChildren = {
+  DasborAcaraRoute: DasborAcaraRoute,
+  DasborMempelaiRoute: DasborMempelaiRoute,
+  DasborIndexRoute: DasborIndexRoute,
+}
+
+const DasborRouteWithChildren =
+  DasborRoute._addFileChildren(DasborRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
+  DasborRoute: DasborRouteWithChildren,
+  LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
