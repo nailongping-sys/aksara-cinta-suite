@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
 import { useStore } from "@/store/appStore";
 
 export const Route = createFileRoute("/admin")({
-  component: AdminLayout;
+  component: AdminLayout,
 });
 
 const navItems = [
