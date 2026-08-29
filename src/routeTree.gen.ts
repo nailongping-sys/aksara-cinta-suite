@@ -18,6 +18,7 @@ import { Route as AdminProfilRouteImport } from './routes/admin.profil'
 import { Route as AdminRsvpRouteImport } from './routes/admin.rsvp'
 import { Route as AdminSistemRouteImport } from './routes/admin.sistem'
 import { Route as AdminTransaksiRouteImport } from './routes/admin.transaksi'
+import { Route as DasborIndexRouteImport } from './routes/dasbor.index'
 import { Route as AdminDoaIndexRouteImport } from './routes/admin.doa.index'
 import { Route as AdminDoaIdRouteImport } from './routes/admin.doa.$id'
 import { Route as AdminDoaBaruRouteImport } from './routes/admin.doa.baru'
@@ -82,6 +83,11 @@ const AdminTransaksiRoute = AdminTransaksiRouteImport.update({
   id: '/transaksi',
   path: '/transaksi',
   getParentRoute: () => AdminRoute,
+} as any)
+const DasborIndexRoute = DasborIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DasborRoute,
 } as any)
 const AdminDoaIndexRoute = AdminDoaIndexRouteImport.update({
   id: '/doa/',
@@ -182,13 +188,14 @@ const AdminUndanganBaruRoute = AdminUndanganBaruRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
-  '/dasbor': typeof DasborRoute
+  '/dasbor': typeof DasborRouteWithChildren
   '/login': typeof LoginRoute
   '/admin/profil': typeof AdminProfilRoute
   '/admin/rsvp': typeof AdminRsvpRoute
   '/admin/sistem': typeof AdminSistemRoute
   '/admin/transaksi': typeof AdminTransaksiRoute
   '/admin/': typeof AdminIndexRoute
+  '/dasbor/': typeof DasborIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/galeri-aset/upload': typeof AdminGaleriAsetUploadRoute
@@ -211,13 +218,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/dasbor': typeof DasborRoute
   '/login': typeof LoginRoute
   '/admin/profil': typeof AdminProfilRoute
   '/admin/rsvp': typeof AdminRsvpRoute
   '/admin/sistem': typeof AdminSistemRoute
   '/admin/transaksi': typeof AdminTransaksiRoute
   '/admin': typeof AdminIndexRoute
+  '/dasbor': typeof DasborIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/galeri-aset/upload': typeof AdminGaleriAsetUploadRoute
@@ -242,13 +249,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
-  '/dasbor': typeof DasborRoute
+  '/dasbor': typeof DasborRouteWithChildren
   '/login': typeof LoginRoute
   '/admin/profil': typeof AdminProfilRoute
   '/admin/rsvp': typeof AdminRsvpRoute
   '/admin/sistem': typeof AdminSistemRoute
   '/admin/transaksi': typeof AdminTransaksiRoute
   '/admin/': typeof AdminIndexRoute
+  '/dasbor/': typeof DasborIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/galeri-aset/upload': typeof AdminGaleriAsetUploadRoute
@@ -281,6 +289,7 @@ export interface FileRouteTypes {
     | '/admin/sistem'
     | '/admin/transaksi'
     | '/admin/'
+    | '/dasbor/'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
     | '/admin/galeri-aset/upload'
@@ -303,13 +312,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/dasbor'
     | '/login'
     | '/admin/profil'
     | '/admin/rsvp'
     | '/admin/sistem'
     | '/admin/transaksi'
     | '/admin'
+    | '/dasbor'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
     | '/admin/galeri-aset/upload'
@@ -340,6 +349,7 @@ export interface FileRouteTypes {
     | '/admin/sistem'
     | '/admin/transaksi'
     | '/admin/'
+    | '/dasbor/'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
     | '/admin/galeri-aset/upload'
@@ -364,7 +374,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRouteWithChildren
-  DasborRoute: typeof DasborRoute
+  DasborRoute: typeof DasborRouteWithChildren
   LoginRoute: typeof LoginRoute
 }
 
@@ -432,6 +442,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/transaksi'
       preLoaderRoute: typeof AdminTransaksiRouteImport
       parentRoute: typeof AdminRoute
+    }
+    '/dasbor/': {
+      id: '/dasbor/'
+      path: '/'
+      fullPath: '/dasbor/'
+      preLoaderRoute: typeof DasborIndexRouteImport
+      parentRoute: typeof DasborRoute
     }
     '/admin/doa/': {
       id: '/admin/doa/'
@@ -625,10 +642,21 @@ const AdminRouteChildren: AdminRouteChildren = {
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
+interface DasborRouteChildren {
+  DasborIndexRoute: typeof DasborIndexRoute
+}
+
+const DasborRouteChildren: DasborRouteChildren = {
+  DasborIndexRoute: DasborIndexRoute,
+}
+
+const DasborRouteWithChildren =
+  DasborRoute._addFileChildren(DasborRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRouteWithChildren,
-  DasborRoute: DasborRoute,
+  DasborRoute: DasborRouteWithChildren,
   LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
