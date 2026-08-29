@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminProfilRouteImport } from './routes/admin.profil'
 import { Route as AdminRsvpRouteImport } from './routes/admin.rsvp'
 import { Route as AdminSistemRouteImport } from './routes/admin.sistem'
 import { Route as AdminTransaksiRouteImport } from './routes/admin.transaksi'
@@ -54,6 +55,11 @@ const LoginRoute = LoginRouteImport.update({
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProfilRoute = AdminProfilRouteImport.update({
+  id: '/profil',
+  path: '/profil',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminRsvpRoute = AdminRsvpRouteImport.update({
@@ -171,6 +177,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
   '/login': typeof LoginRoute
+  '/admin/profil': typeof AdminProfilRoute
   '/admin/rsvp': typeof AdminRsvpRoute
   '/admin/sistem': typeof AdminSistemRoute
   '/admin/transaksi': typeof AdminTransaksiRoute
@@ -198,6 +205,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/admin/profil': typeof AdminProfilRoute
   '/admin/rsvp': typeof AdminRsvpRoute
   '/admin/sistem': typeof AdminSistemRoute
   '/admin/transaksi': typeof AdminTransaksiRoute
@@ -227,6 +235,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
   '/login': typeof LoginRoute
+  '/admin/profil': typeof AdminProfilRoute
   '/admin/rsvp': typeof AdminRsvpRoute
   '/admin/sistem': typeof AdminSistemRoute
   '/admin/transaksi': typeof AdminTransaksiRoute
@@ -257,6 +266,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/login'
+    | '/admin/profil'
     | '/admin/rsvp'
     | '/admin/sistem'
     | '/admin/transaksi'
@@ -284,6 +294,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/login'
+    | '/admin/profil'
     | '/admin/rsvp'
     | '/admin/sistem'
     | '/admin/transaksi'
@@ -312,6 +323,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/login'
+    | '/admin/profil'
     | '/admin/rsvp'
     | '/admin/sistem'
     | '/admin/transaksi'
@@ -371,6 +383,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/profil': {
+      id: '/admin/profil'
+      path: '/profil'
+      fullPath: '/admin/profil'
+      preLoaderRoute: typeof AdminProfilRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/rsvp': {
@@ -531,6 +550,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
+  AdminProfilRoute: typeof AdminProfilRoute
   AdminRsvpRoute: typeof AdminRsvpRoute
   AdminSistemRoute: typeof AdminSistemRoute
   AdminTransaksiRoute: typeof AdminTransaksiRoute
@@ -557,6 +577,7 @@ interface AdminRouteChildren {
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminProfilRoute: AdminProfilRoute,
   AdminRsvpRoute: AdminRsvpRoute,
   AdminSistemRoute: AdminSistemRoute,
   AdminTransaksiRoute: AdminTransaksiRoute,
