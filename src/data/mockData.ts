@@ -396,9 +396,9 @@ export const assets: Asset[] = Array.from({ length: 12 }, (_, index) => {
   return {
     id: `a-${index + 1}`,
     name: `ornamen-${index + 1}.png`,
-    category: categories[index % categories.length],
+    category: categories[index % categories.length]!,
     size: index % 2 === 0 ? "1024 x 1024" : "512 x 512",
-    url: photo(ids[index % ids.length]),
+    url: photo(ids[index % ids.length]!),
   };
 });
 
