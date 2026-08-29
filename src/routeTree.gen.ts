@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminRsvpRouteImport } from './routes/admin.rsvp'
 import { Route as AdminDoaIndexRouteImport } from './routes/admin.doa.index'
 import { Route as AdminDoaIdRouteImport } from './routes/admin.doa.$id'
 import { Route as AdminDoaBaruRouteImport } from './routes/admin.doa.baru'
@@ -51,6 +52,11 @@ const LoginRoute = LoginRouteImport.update({
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRsvpRoute = AdminRsvpRouteImport.update({
+  id: '/rsvp',
+  path: '/rsvp',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminDoaIndexRoute = AdminDoaIndexRouteImport.update({
@@ -153,6 +159,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
   '/login': typeof LoginRoute
+  '/admin/rsvp': typeof AdminRsvpRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
@@ -177,6 +184,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/admin/rsvp': typeof AdminRsvpRoute
   '/admin': typeof AdminIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
@@ -203,6 +211,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
   '/login': typeof LoginRoute
+  '/admin/rsvp': typeof AdminRsvpRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
@@ -230,6 +239,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/login'
+    | '/admin/rsvp'
     | '/admin/'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
@@ -254,6 +264,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/login'
+    | '/admin/rsvp'
     | '/admin'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
@@ -279,6 +290,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/login'
+    | '/admin/rsvp'
     | '/admin/'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
@@ -335,6 +347,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/rsvp': {
+      id: '/admin/rsvp'
+      path: '/rsvp'
+      fullPath: '/admin/rsvp'
+      preLoaderRoute: typeof AdminRsvpRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/doa/': {
@@ -474,6 +493,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
+  AdminRsvpRoute: typeof AdminRsvpRoute
   AdminIndexRoute: typeof AdminIndexRoute
   AdminDoaIdRoute: typeof AdminDoaIdRoute
   AdminDoaBaruRoute: typeof AdminDoaBaruRoute
@@ -497,6 +517,7 @@ interface AdminRouteChildren {
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminRsvpRoute: AdminRsvpRoute,
   AdminIndexRoute: AdminIndexRoute,
   AdminDoaIdRoute: AdminDoaIdRoute,
   AdminDoaBaruRoute: AdminDoaBaruRoute,
