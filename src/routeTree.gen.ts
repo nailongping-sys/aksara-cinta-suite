@@ -17,6 +17,7 @@ import { Route as AdminDoaIndexRouteImport } from './routes/admin.doa.index'
 import { Route as AdminDoaIdRouteImport } from './routes/admin.doa.$id'
 import { Route as AdminDoaBaruRouteImport } from './routes/admin.doa.baru'
 import { Route as AdminMusikIndexRouteImport } from './routes/admin.musik.index'
+import { Route as AdminMusikBaruRouteImport } from './routes/admin.musik.baru'
 import { Route as AdminPenggunaIndexRouteImport } from './routes/admin.pengguna.index'
 import { Route as AdminPenggunaIdRouteImport } from './routes/admin.pengguna.$id'
 import { Route as AdminPenggunaBaruRouteImport } from './routes/admin.pengguna.baru'
@@ -68,6 +69,11 @@ const AdminDoaBaruRoute = AdminDoaBaruRouteImport.update({
 const AdminMusikIndexRoute = AdminMusikIndexRouteImport.update({
   id: '/musik/',
   path: '/musik/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMusikBaruRoute = AdminMusikBaruRouteImport.update({
+  id: '/musik/baru',
+  path: '/musik/baru',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminPenggunaIndexRoute = AdminPenggunaIndexRouteImport.update({
@@ -138,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
+  '/admin/musik/baru': typeof AdminMusikBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
   '/admin/quotes/baru': typeof AdminQuotesBaruRoute
@@ -159,6 +166,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
+  '/admin/musik/baru': typeof AdminMusikBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
   '/admin/quotes/baru': typeof AdminQuotesBaruRoute
@@ -182,6 +190,7 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
   '/admin/doa/baru': typeof AdminDoaBaruRoute
+  '/admin/musik/baru': typeof AdminMusikBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
   '/admin/quotes/baru': typeof AdminQuotesBaruRoute
@@ -206,6 +215,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
+    | '/admin/musik/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
     | '/admin/quotes/baru'
@@ -227,6 +237,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
+    | '/admin/musik/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
     | '/admin/quotes/baru'
@@ -249,6 +260,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/doa/$id'
     | '/admin/doa/baru'
+    | '/admin/musik/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
     | '/admin/quotes/baru'
@@ -327,6 +339,13 @@ declare module '@tanstack/react-router' {
       path: '/musik'
       fullPath: '/admin/musik/'
       preLoaderRoute: typeof AdminMusikIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/musik/baru': {
+      id: '/admin/musik/baru'
+      path: '/musik/baru'
+      fullPath: '/admin/musik/baru'
+      preLoaderRoute: typeof AdminMusikBaruRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/pengguna/': {
@@ -420,6 +439,7 @@ interface AdminRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
   AdminDoaIdRoute: typeof AdminDoaIdRoute
   AdminDoaBaruRoute: typeof AdminDoaBaruRoute
+  AdminMusikBaruRoute: typeof AdminMusikBaruRoute
   AdminPenggunaIdRoute: typeof AdminPenggunaIdRoute
   AdminPenggunaBaruRoute: typeof AdminPenggunaBaruRoute
   AdminQuotesBaruRoute: typeof AdminQuotesBaruRoute
@@ -440,6 +460,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
   AdminDoaIdRoute: AdminDoaIdRoute,
   AdminDoaBaruRoute: AdminDoaBaruRoute,
+  AdminMusikBaruRoute: AdminMusikBaruRoute,
   AdminPenggunaIdRoute: AdminPenggunaIdRoute,
   AdminPenggunaBaruRoute: AdminPenggunaBaruRoute,
   AdminQuotesBaruRoute: AdminQuotesBaruRoute,
