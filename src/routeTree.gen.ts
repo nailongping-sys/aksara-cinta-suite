@@ -16,6 +16,7 @@ import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminDoaIndexRouteImport } from './routes/admin.doa.index'
 import { Route as AdminDoaIdRouteImport } from './routes/admin.doa.$id'
 import { Route as AdminDoaBaruRouteImport } from './routes/admin.doa.baru'
+import { Route as AdminGaleriAsetIndexRouteImport } from './routes/admin.galeri-aset.index'
 import { Route as AdminMusikIndexRouteImport } from './routes/admin.musik.index'
 import { Route as AdminMusikBaruRouteImport } from './routes/admin.musik.baru'
 import { Route as AdminPenggunaIndexRouteImport } from './routes/admin.pengguna.index'
@@ -64,6 +65,11 @@ const AdminDoaIdRoute = AdminDoaIdRouteImport.update({
 const AdminDoaBaruRoute = AdminDoaBaruRouteImport.update({
   id: '/doa/baru',
   path: '/doa/baru',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminGaleriAsetIndexRoute = AdminGaleriAsetIndexRouteImport.update({
+  id: '/galeri-aset/',
+  path: '/galeri-aset/',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminMusikIndexRoute = AdminMusikIndexRouteImport.update({
@@ -153,6 +159,7 @@ export interface FileRoutesByFullPath {
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/doa/': typeof AdminDoaIndexRoute
+  '/admin/galeri-aset/': typeof AdminGaleriAsetIndexRoute
   '/admin/musik/': typeof AdminMusikIndexRoute
   '/admin/pengguna/': typeof AdminPenggunaIndexRoute
   '/admin/quotes/': typeof AdminQuotesIndexRoute
@@ -175,6 +182,7 @@ export interface FileRoutesByTo {
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/doa': typeof AdminDoaIndexRoute
+  '/admin/galeri-aset': typeof AdminGaleriAsetIndexRoute
   '/admin/musik': typeof AdminMusikIndexRoute
   '/admin/pengguna': typeof AdminPenggunaIndexRoute
   '/admin/quotes': typeof AdminQuotesIndexRoute
@@ -199,6 +207,7 @@ export interface FileRoutesById {
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/doa/': typeof AdminDoaIndexRoute
+  '/admin/galeri-aset/': typeof AdminGaleriAsetIndexRoute
   '/admin/musik/': typeof AdminMusikIndexRoute
   '/admin/pengguna/': typeof AdminPenggunaIndexRoute
   '/admin/quotes/': typeof AdminQuotesIndexRoute
@@ -224,6 +233,7 @@ export interface FileRouteTypes {
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
     | '/admin/doa/'
+    | '/admin/galeri-aset/'
     | '/admin/musik/'
     | '/admin/pengguna/'
     | '/admin/quotes/'
@@ -246,6 +256,7 @@ export interface FileRouteTypes {
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
     | '/admin/doa'
+    | '/admin/galeri-aset'
     | '/admin/musik'
     | '/admin/pengguna'
     | '/admin/quotes'
@@ -269,6 +280,7 @@ export interface FileRouteTypes {
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
     | '/admin/doa/'
+    | '/admin/galeri-aset/'
     | '/admin/musik/'
     | '/admin/pengguna/'
     | '/admin/quotes/'
@@ -332,6 +344,13 @@ declare module '@tanstack/react-router' {
       path: '/doa/baru'
       fullPath: '/admin/doa/baru'
       preLoaderRoute: typeof AdminDoaBaruRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/galeri-aset/': {
+      id: '/admin/galeri-aset/'
+      path: '/galeri-aset'
+      fullPath: '/admin/galeri-aset/'
+      preLoaderRoute: typeof AdminGaleriAsetIndexRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/musik/': {
@@ -448,6 +467,7 @@ interface AdminRouteChildren {
   AdminUndanganIdRoute: typeof AdminUndanganIdRoute
   AdminUndanganBaruRoute: typeof AdminUndanganBaruRoute
   AdminDoaIndexRoute: typeof AdminDoaIndexRoute
+  AdminGaleriAsetIndexRoute: typeof AdminGaleriAsetIndexRoute
   AdminMusikIndexRoute: typeof AdminMusikIndexRoute
   AdminPenggunaIndexRoute: typeof AdminPenggunaIndexRoute
   AdminQuotesIndexRoute: typeof AdminQuotesIndexRoute
@@ -469,6 +489,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminUndanganIdRoute: AdminUndanganIdRoute,
   AdminUndanganBaruRoute: AdminUndanganBaruRoute,
   AdminDoaIndexRoute: AdminDoaIndexRoute,
+  AdminGaleriAsetIndexRoute: AdminGaleriAsetIndexRoute,
   AdminMusikIndexRoute: AdminMusikIndexRoute,
   AdminPenggunaIndexRoute: AdminPenggunaIndexRoute,
   AdminQuotesIndexRoute: AdminQuotesIndexRoute,
