@@ -17,6 +17,7 @@ import { Route as AdminPenggunaIndexRouteImport } from './routes/admin.pengguna.
 import { Route as AdminPenggunaIdRouteImport } from './routes/admin.pengguna.$id'
 import { Route as AdminPenggunaBaruRouteImport } from './routes/admin.pengguna.baru'
 import { Route as AdminTemplateIndexRouteImport } from './routes/admin.template.index'
+import { Route as AdminTemplateUploadRouteImport } from './routes/admin.template.upload'
 import { Route as AdminUndanganIndexRouteImport } from './routes/admin.undangan.index'
 import { Route as AdminUndanganIdRouteImport } from './routes/admin.undangan.$id'
 import { Route as AdminUndanganBaruRouteImport } from './routes/admin.undangan.baru'
@@ -61,6 +62,11 @@ const AdminTemplateIndexRoute = AdminTemplateIndexRouteImport.update({
   path: '/template/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminTemplateUploadRoute = AdminTemplateUploadRouteImport.update({
+  id: '/template/upload',
+  path: '/template/upload',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminUndanganIndexRoute = AdminUndanganIndexRouteImport.update({
   id: '/undangan/',
   path: '/undangan/',
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/template/upload': typeof AdminTemplateUploadRoute
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/pengguna/': typeof AdminPenggunaIndexRoute
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/template/upload': typeof AdminTemplateUploadRoute
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/pengguna': typeof AdminPenggunaIndexRoute
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
+  '/admin/template/upload': typeof AdminTemplateUploadRoute
   '/admin/undangan/$id': typeof AdminUndanganIdRoute
   '/admin/undangan/baru': typeof AdminUndanganBaruRoute
   '/admin/pengguna/': typeof AdminPenggunaIndexRoute
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
+    | '/admin/template/upload'
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
     | '/admin/pengguna/'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
+    | '/admin/template/upload'
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
     | '/admin/pengguna'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
+    | '/admin/template/upload'
     | '/admin/undangan/$id'
     | '/admin/undangan/baru'
     | '/admin/pengguna/'
@@ -221,6 +233,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminTemplateIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/template/upload': {
+      id: '/admin/template/upload'
+      path: '/template/upload'
+      fullPath: '/admin/template/upload'
+      preLoaderRoute: typeof AdminTemplateUploadRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/undangan/': {
       id: '/admin/undangan/'
       path: '/undangan'
@@ -249,6 +268,7 @@ interface AdminRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
   AdminPenggunaIdRoute: typeof AdminPenggunaIdRoute
   AdminPenggunaBaruRoute: typeof AdminPenggunaBaruRoute
+  AdminTemplateUploadRoute: typeof AdminTemplateUploadRoute
   AdminUndanganIdRoute: typeof AdminUndanganIdRoute
   AdminUndanganBaruRoute: typeof AdminUndanganBaruRoute
   AdminPenggunaIndexRoute: typeof AdminPenggunaIndexRoute
@@ -260,6 +280,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
   AdminPenggunaIdRoute: AdminPenggunaIdRoute,
   AdminPenggunaBaruRoute: AdminPenggunaBaruRoute,
+  AdminTemplateUploadRoute: AdminTemplateUploadRoute,
   AdminUndanganIdRoute: AdminUndanganIdRoute,
   AdminUndanganBaruRoute: AdminUndanganBaruRoute,
   AdminPenggunaIndexRoute: AdminPenggunaIndexRoute,
