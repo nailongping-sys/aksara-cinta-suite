@@ -19,6 +19,7 @@ import { Route as AdminRsvpRouteImport } from './routes/admin.rsvp'
 import { Route as AdminSistemRouteImport } from './routes/admin.sistem'
 import { Route as AdminTransaksiRouteImport } from './routes/admin.transaksi'
 import { Route as DasborIndexRouteImport } from './routes/dasbor.index'
+import { Route as DasborMempelaiRouteImport } from './routes/dasbor.mempelai'
 import { Route as AdminDoaIndexRouteImport } from './routes/admin.doa.index'
 import { Route as AdminDoaIdRouteImport } from './routes/admin.doa.$id'
 import { Route as AdminDoaBaruRouteImport } from './routes/admin.doa.baru'
@@ -87,6 +88,11 @@ const AdminTransaksiRoute = AdminTransaksiRouteImport.update({
 const DasborIndexRoute = DasborIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => DasborRoute,
+} as any)
+const DasborMempelaiRoute = DasborMempelaiRouteImport.update({
+  id: '/mempelai',
+  path: '/mempelai',
   getParentRoute: () => DasborRoute,
 } as any)
 const AdminDoaIndexRoute = AdminDoaIndexRouteImport.update({
@@ -194,6 +200,7 @@ export interface FileRoutesByFullPath {
   '/admin/rsvp': typeof AdminRsvpRoute
   '/admin/sistem': typeof AdminSistemRoute
   '/admin/transaksi': typeof AdminTransaksiRoute
+  '/dasbor/mempelai': typeof DasborMempelaiRoute
   '/admin/': typeof AdminIndexRoute
   '/dasbor/': typeof DasborIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
@@ -223,6 +230,7 @@ export interface FileRoutesByTo {
   '/admin/rsvp': typeof AdminRsvpRoute
   '/admin/sistem': typeof AdminSistemRoute
   '/admin/transaksi': typeof AdminTransaksiRoute
+  '/dasbor/mempelai': typeof DasborMempelaiRoute
   '/admin': typeof AdminIndexRoute
   '/dasbor': typeof DasborIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
@@ -255,6 +263,7 @@ export interface FileRoutesById {
   '/admin/rsvp': typeof AdminRsvpRoute
   '/admin/sistem': typeof AdminSistemRoute
   '/admin/transaksi': typeof AdminTransaksiRoute
+  '/dasbor/mempelai': typeof DasborMempelaiRoute
   '/admin/': typeof AdminIndexRoute
   '/dasbor/': typeof DasborIndexRoute
   '/admin/doa/$id': typeof AdminDoaIdRoute
@@ -288,6 +297,7 @@ export interface FileRouteTypes {
     | '/admin/rsvp'
     | '/admin/sistem'
     | '/admin/transaksi'
+    | '/dasbor/mempelai'
     | '/admin/'
     | '/dasbor/'
     | '/admin/doa/$id'
@@ -317,6 +327,7 @@ export interface FileRouteTypes {
     | '/admin/rsvp'
     | '/admin/sistem'
     | '/admin/transaksi'
+    | '/dasbor/mempelai'
     | '/admin'
     | '/dasbor'
     | '/admin/doa/$id'
@@ -348,6 +359,7 @@ export interface FileRouteTypes {
     | '/admin/rsvp'
     | '/admin/sistem'
     | '/admin/transaksi'
+    | '/dasbor/mempelai'
     | '/admin/'
     | '/dasbor/'
     | '/admin/doa/$id'
@@ -448,6 +460,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/dasbor/'
       preLoaderRoute: typeof DasborIndexRouteImport
+      parentRoute: typeof DasborRoute
+    }
+    '/dasbor/mempelai': {
+      id: '/dasbor/mempelai'
+      path: '/mempelai'
+      fullPath: '/dasbor/mempelai'
+      preLoaderRoute: typeof DasborMempelaiRouteImport
       parentRoute: typeof DasborRoute
     }
     '/admin/doa/': {
@@ -643,10 +662,12 @@ const AdminRouteChildren: AdminRouteChildren = {
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface DasborRouteChildren {
+  DasborMempelaiRoute: typeof DasborMempelaiRoute
   DasborIndexRoute: typeof DasborIndexRoute
 }
 
 const DasborRouteChildren: DasborRouteChildren = {
+  DasborMempelaiRoute: DasborMempelaiRoute,
   DasborIndexRoute: DasborIndexRoute,
 }
 
