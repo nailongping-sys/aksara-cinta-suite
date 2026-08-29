@@ -14,6 +14,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminDoaIndexRouteImport } from './routes/admin.doa.index'
+import { Route as AdminDoaBaruRouteImport } from './routes/admin.doa.baru'
 import { Route as AdminPenggunaIndexRouteImport } from './routes/admin.pengguna.index'
 import { Route as AdminPenggunaIdRouteImport } from './routes/admin.pengguna.$id'
 import { Route as AdminPenggunaBaruRouteImport } from './routes/admin.pengguna.baru'
@@ -46,6 +47,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
 const AdminDoaIndexRoute = AdminDoaIndexRouteImport.update({
   id: '/doa/',
   path: '/doa/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDoaBaruRoute = AdminDoaBaruRouteImport.update({
+  id: '/doa/baru',
+  path: '/doa/baru',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminPenggunaIndexRoute = AdminPenggunaIndexRouteImport.update({
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/login': typeof LoginRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
   '/admin/template/upload': typeof AdminTemplateUploadRoute
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/admin': typeof AdminIndexRoute
+  '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
   '/admin/template/upload': typeof AdminTemplateUploadRoute
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/login': typeof LoginRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/doa/baru': typeof AdminDoaBaruRoute
   '/admin/pengguna/$id': typeof AdminPenggunaIdRoute
   '/admin/pengguna/baru': typeof AdminPenggunaBaruRoute
   '/admin/template/upload': typeof AdminTemplateUploadRoute
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/login'
     | '/admin/'
+    | '/admin/doa/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
     | '/admin/template/upload'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/admin'
+    | '/admin/doa/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
     | '/admin/template/upload'
@@ -170,6 +181,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/login'
     | '/admin/'
+    | '/admin/doa/baru'
     | '/admin/pengguna/$id'
     | '/admin/pengguna/baru'
     | '/admin/template/upload'
@@ -222,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/doa'
       fullPath: '/admin/doa/'
       preLoaderRoute: typeof AdminDoaIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/doa/baru': {
+      id: '/admin/doa/baru'
+      path: '/doa/baru'
+      fullPath: '/admin/doa/baru'
+      preLoaderRoute: typeof AdminDoaBaruRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/pengguna/': {
@@ -285,6 +304,7 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
+  AdminDoaBaruRoute: typeof AdminDoaBaruRoute
   AdminPenggunaIdRoute: typeof AdminPenggunaIdRoute
   AdminPenggunaBaruRoute: typeof AdminPenggunaBaruRoute
   AdminTemplateUploadRoute: typeof AdminTemplateUploadRoute
@@ -298,6 +318,7 @@ interface AdminRouteChildren {
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
+  AdminDoaBaruRoute: AdminDoaBaruRoute,
   AdminPenggunaIdRoute: AdminPenggunaIdRoute,
   AdminPenggunaBaruRoute: AdminPenggunaBaruRoute,
   AdminTemplateUploadRoute: AdminTemplateUploadRoute,
